@@ -2,22 +2,22 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: amazon-primevideo-deployment
+  name: amazon-prime-video-deployment
 spec:
   replicas: 2
   strategy:
     type: RollingUpdate
   selector:
     matchLabels:
-      app: amazon-primevideo
+      app: amazon-prime-video
   template:
     metadata:
       labels:
         app: amazon-prime-video
     spec:
       containers:
-      - name: amazon-primevideo-container
-        image: vickey99/amazon-primevideo
+      - name: amazon-prime-video-container
+        image: vickey99/amazon-prime-video
         ports:
         - containerPort: 3000
 ---
@@ -28,7 +28,7 @@ metadata:
 spec:
   type: LoadBalancer
   selector:
-    app: amazon-primevideo
+    app: amazon-prime-video
   ports:
   - port: 80
     targetPort: 3000
